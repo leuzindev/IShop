@@ -6,9 +6,9 @@ class ProductController {
     static async getAllProducts(req, res){
     try {
         const allProducts = await prisma.product.findMany();
-        return res.send(allProducts);
+        return res.json(allProducts);
     } catch (error) {
-        res.stats(500).json(error.message);
+        res.status(500).json(error.message);
     }
     }
 
@@ -46,13 +46,13 @@ class ProductController {
         try {
             const { id } = req.params;
             await prisma.product.delete({where: { id: parseInt(id) }})
-            res.stats(200).json({msg: "Produto deletado"})
+            res.status(200).json({msg: "Produtc has been deleted"})
         } catch (error) {
             res.status(500).json(error.message);
         }
     }
 
-    static async alteraProduto(req, res){
+    static async updateProduto(req, res){
         try {
             const { id } = req.params;
             const { name, description, price } = req.body;

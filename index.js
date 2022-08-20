@@ -9,6 +9,6 @@ routes(app);
 
 
 app.listen(3080, () => {
-    console.log("Escutando em 1234");
+    console.log("Escutando em 3080");
 });
 
